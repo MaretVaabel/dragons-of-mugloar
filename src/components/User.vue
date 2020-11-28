@@ -17,36 +17,20 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {  mapState } from 'vuex'
 
 export default {
     name: 'user',
-    // props: [ 'userData' ],
-    data() {
-        return {
-            gameId: 0,
-            Lives: 0,
-            Level: 0,
-            Gold: 0,
-            Turn: 0,
-            Score: 0,
-            HighScore: 0
-        }
-    },
     components: {
-
     },
     mounted() {
         this.$store.dispatch('getUserData')
+        console.log(this.$store.state.userData)
     },
     computed: {
-        ...mapState({
-          userData: state => state.userData  
-        }) 
-    },
-    methods: {
-       
-       
+         ...mapState({
+           userData: state => state.userData
+         })
     }
 }
 </script>

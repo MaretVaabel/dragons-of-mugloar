@@ -6,7 +6,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        userData: {}
+        userData: {},
+        messages: {},
+        reputation: {}
 
     },
     mutations: {
@@ -28,17 +30,29 @@ export default new Vuex.Store({
                 console.log(error)
             })
 
+        },
+        getReputation(state, gameId) {
+            axios.post(`https://dragonsofmugloar.com/api/v2/${gameId}/investigate/reputation`)
+            .then((response) => {
+                console.log(response)
+                state.reputation = {
+                    people: response.data.people,
+                    state: response.data.state,
+                    underworld: response.data.underworld
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+            })
         }
-
     },
     actions: {
         getUserData: context => {
             context.commit('getUserData')
-        }
-           
-    
-
-        
+        },
+        getReputation(context, gameId) {  
+            context.commit('getReputation', gameId)
+        }    
 
     }
 })
