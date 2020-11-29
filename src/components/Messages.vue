@@ -13,7 +13,7 @@
                 <router-link :to="{ name: 'message', params: { adId:msg.adId } }">
                    <p> {{ msg.message.split(' ')[1] ? msg.message : 'It is not the real message' }} </p>
                 </router-link>
-                <div class="down">Reward: {{ msg.reward }} gold  Expires in : {{ msg.expiresIn}} turns</div>
+                <div class="down">Reward: {{ msg.reward }} gold,  Expires in: {{ msg.expiresIn}} turns</div>
             </div> 
         </div>
     </div>
