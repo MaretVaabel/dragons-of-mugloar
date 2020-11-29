@@ -48,8 +48,8 @@ export default new Vuex.Store({
             axios.get(`https://dragonsofmugloar.com/api/v2/${gameId}/messages`)
             .then((response) => {
                 //console.log(response.data)
-                
-                state.messages = response.data
+                    state.messages = response.data
+                   
             })
             .catch((error) => {
                 console.log(error)

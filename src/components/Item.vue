@@ -1,5 +1,8 @@
 <template>
    <div class="container justify-content-center">
+         <div class="row justify-content-left"> 
+            <router-link to="/home"><button type="button" class="btn btn-outline-info">Back to main board</button></router-link>     
+      </div>
       <div class="box d-flex justify-content-center">
           <div v-show="item.shoppingSuccess === true" class="msg">
               <p>You purchase was successful</p>

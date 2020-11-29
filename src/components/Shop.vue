@@ -60,5 +60,8 @@ p {
   font-weight: 400;
   color: black;
 }
+.msg:hover {
+    background-color: lightblue;
+}
 
 </style>

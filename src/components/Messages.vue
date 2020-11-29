@@ -32,6 +32,7 @@ export default {
     mounted() {
         this.$store.state.userData && (this.gameId = this.$store.state.userData.gameId)
         this.$store.dispatch('getMessages', this.gameId)
+
     },
     computed: {
         ...mapState({
@@ -58,5 +59,8 @@ p {
   font-size: 25px;
   font-weight: 400;
   color: black;
+}
+.msg:hover {
+    background-color: lightblue;
 }
 </style>

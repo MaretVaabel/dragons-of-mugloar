@@ -1,5 +1,5 @@
 <template>
-  <div class='container d-flex justify-content-around'>
+  <div class='container d-flex justify-content-around flex-wrap'>
     <router-link to="/investigation"><div class="box d-flex justify-content-center"> <p>Investigate your reputation</p></div></router-link>
     <router-link to="/messages"><div class="box d-flex justify-content-center"><p>See all messages</p></div></router-link>
    <router-link to="/shop"> <div class="box d-flex justify-content-center"><p>Shop</p></div></router-link>
@@ -26,5 +26,8 @@ export default {
 p {
   font-size: 25px;
   font-weight: 400;
+}
+.box:hover {
+    background-color: lightblue;
 }
 </style>>
