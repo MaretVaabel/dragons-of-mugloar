@@ -1,8 +1,6 @@
 <template>
   <div class="home">
-    <header> 
-      <User />
-    </header>
+    <User />
     <main>
       <router-view />
     </main>
@@ -22,12 +20,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-header {
-  width: 100vw;
-  background-color: white;
-  position: fixed;
-  z-index: 1;
-}
 main {
   margin: 100px;
   

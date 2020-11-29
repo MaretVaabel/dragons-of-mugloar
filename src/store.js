@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import router from './router'
 
 Vue.use(Vuex)
 
@@ -10,14 +9,16 @@ export default new Vuex.Store({
         userData: {},
         messages: [],
         reputation: {},
-        message: {}
+        message: {},
+        items: {},
+        item: {}
 
     },
     mutations: {
-        getUserData(state){
+       async getUserData(state){
             
-            axios.post(`https://dragonsofmugloar.com/api/v2/game/start`)
-            .then((response) => {
+        const response = await axios.post(`https://dragonsofmugloar.com/api/v2/game/start`)
+           
                 state.userData = {
                     gameId: response.data.gameId,
                     lives: response.data.lives,
@@ -27,10 +28,6 @@ export default new Vuex.Store({
                     highScore: response.data.highScore,
                     turn: response.data.turn
                 }
-            })
-            .catch((error) => {
-                console.log(error)
-            })
 
         },
         getReputation(state, gameId) {
@@ -61,28 +58,53 @@ export default new Vuex.Store({
         solveMessage(state, params) {
             axios.post(`https://dragonsofmugloar.com/api/v2/${params.gameId}/solve/${params.adId}`)
             .then((response) => {
-                console.log(response.data)
-                
+                //console.log(response.data)
                 state.message = response.data
                 if(state.userData && state.userData.lives > 0) {
                     state.userData.lives = response.data.lives
                     state.userData.gold = response.data.gold 
                     state.userData.turn = response.data.turn 
                     state.userData.score = response.data.score
-                    if(state.userData.highScore < state.userData.score) {
-                        state.userData.highScore = state.userData.score
+                    if(state.userData.highScore < response.data.score) {
+                        state.userData.highScore = response.data.score
                     }   
-                }else {
-                    router.push('/gameOver')
-                }
+                }    
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+            
+        },
+        getItems(state, gameId) {
+
+            axios.get(`https://dragonsofmugloar.com/api/v2/${gameId}/shop`)
+            .then((response) => {
+                console.log(response)
+                state.items = response.data
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+        },
+        buyItem(state, params) {
+            axios.post(`https://dragonsofmugloar.com/api/v2/${params.gameId}/shop/buy/${params.id}`)
+            .then((response) => {
+                //console.log(response.data)
                 
-                
+                state.item = response.data
+                if(state.userData && state.userData.lives > 0) {
+                    state.userData.lives = response.data.lives
+                    state.userData.gold = response.data.gold 
+                    state.userData.turn = response.data.turn 
+                    state.userData.level = response.data.level   
+                }  
             })
             .catch((error) => {
                 console.log(error)
             })
             
         }
+        
     },
     actions: {
         getUserData: context => {
@@ -96,7 +118,13 @@ export default new Vuex.Store({
         },
         solveMessage(context, params) {
             context.commit('solveMessage', params)
-        }    
+        },
+        getItems(context, gameId) {
+            context.commit('getItems', gameId)
+        },
+        buyItem(context, params) {
+            context.commit('buyItem', params)
+        }  
 
     }
 })

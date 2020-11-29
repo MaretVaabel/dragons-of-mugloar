@@ -16,12 +16,15 @@ export default {
 <style scoped>
 .box {
   align-items: center;
+  border: 2px solid black;
+  border-radius: 10%;
+  width: 300px;
+  height: 200px;
+  margin-top: 100px;
+  padding: 20px;
   }
 p {
   font-size: 25px;
   font-weight: 400;
-}
-.box:hover {
-  background-color: cadetblue;
 }
 </style>>
