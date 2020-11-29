@@ -16,6 +16,7 @@ const routes = [
           { path: '/shoppingCart', component: () => import('./components/ShoppingCart.vue') },
           { path: '/investigation', component: () => import('./components/Investigation.vue') },
           { path: '/messages', component: () => import('./components/Messages.vue') },
+          { path: '/message/:adId', name: 'message', component: () => import('./components/Message.vue') },
           { path: '/shop', component: () => import('./components/Shop.vue') },
          ]
 

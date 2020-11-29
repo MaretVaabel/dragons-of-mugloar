@@ -16,9 +16,6 @@ export default {
   name: 'Home',
   components: {
     User
-  },
-  props: {
-    msg: String
   }
 }
 </script>
@@ -28,7 +25,6 @@ export default {
 header {
   width: 100vw;
   background-color: white;
-  padding: 15px;
   position: fixed;
   z-index: 1;
 }

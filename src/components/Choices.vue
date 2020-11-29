@@ -15,12 +15,6 @@ export default {
 
 <style scoped>
 .box {
-  width: 200px;
-  height: 150px;
-  border: 2px solid black;
-  padding: 20px;
-  margin: 30px;
-  border-radius: 5%;
   align-items: center;
   }
 p {

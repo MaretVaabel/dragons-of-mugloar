@@ -13,15 +13,20 @@
               <span class="badge badge-danger badge-pill">3</span>
         </router-link>
       </nav>
+  <div>
+      <Choices />
+  </div>
     </div>
 </template>
 
 <script>
 import {  mapState } from 'vuex'
+import Choices from './Choices.vue'
 
 export default {
     name: 'user',
     components: {
+     Choices
     },
     mounted() {
         this.$store.dispatch('getUserData')
