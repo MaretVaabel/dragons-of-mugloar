@@ -1,29 +1,25 @@
 <template>
-  <div >
-      <nav class="navbar navbar-expand-lg fixed-top">
-        <router-link class="navbar-brand" to="/home">Dragons of Mugloar</router-link>
-        <div class="mr-auto text-white">Lives:  {{ userData.lives }} Level: {{ userData.level }} Gold: {{ userData.gold }} Turn: {{ userData.turn }} </div>
-        <div class="ml-auto text-white">Score: {{ userData.score }}  HighScore: {{ userData.highScore }} </div>
-      </nav>
+    <div >
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <router-link class="navbar-brand" to="/home">Dragons of Mugloar</router-link>
+            <div class="mr-auto text-white">Lives:  {{ userData.lives }} Level: {{ userData.level }} Gold: {{ userData.gold }} Turn: {{ userData.turn }} </div>
+            <div class="ml-auto text-white">Score: {{ userData.score }}  HighScore: {{ userData.highScore }} </div>
+        </nav>
     </div>
 </template>
 
 <script>
 import {  mapState } from 'vuex'
 
-
 export default {
     name: 'user',
-    components: {
-     
-    },
     mounted() {
         this.$store.dispatch('getUserData')
     },
     computed: {
-         ...mapState({
+        ...mapState({
            userData: state => state.userData
-         })
+        })
     }
 }
 </script>

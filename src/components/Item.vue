@@ -1,26 +1,26 @@
 <template>
-   <div class="container justify-content-center">
-         <div class="row justify-content-left"> 
+    <div class="container justify-content-center">
+        <div class="row justify-content-left"> 
             <router-link to="/home"><button type="button" class="btn btn-outline-info">Back to main board</button></router-link>     
-      </div>
-      <div class="box d-flex justify-content-center">
-          <div v-show="item.shoppingSuccess === true" class="msg">
-              <p>You purchase was successful</p>
-          </div>
-          <div v-show="item.shoppingSuccess === false" class="msg">
-              <p>You purchase failed</p>
-          </div>
-      </div>
-      <div class="buttons row justify-content-center">
-      <div v-show="this.$store.state.userData.lives != 0">
-      <router-link to="/shop"><button type="button" class="btn btn-outline-info p-2 m-2">Pick another item</button></router-link>
+        </div>
+        <div class="box d-flex justify-content-center">
+            <div v-show="item.shoppingSuccess === true" class="msg">
+                <p>You purchase was successful</p>
+            </div>
+            <div v-show="item.shoppingSuccess === false" class="msg">
+                <p>You purchase failed</p>
+            </div>
+        </div>
+        <div class="buttons row justify-content-center">
+            <div v-show="this.$store.state.userData.lives != 0">
+                <router-link to="/shop"><button type="button" class="btn btn-outline-info p-2 m-2">Pick another item</button></router-link>
+            </div>
+                <router-link to="/messages"><button type="button" class="btn btn-outline-info p-2 m-2">Back to messages</button></router-link>
+            <div v-show="this.$store.state.userData.lives === 0">
+                <router-link to="/"><button type="button" class="btn btn-outline-info p-2 m-2">Start the new game</button></router-link>
+            </div>
+         </div>
     </div>
-    <router-link to="/messages"><button type="button" class="btn btn-outline-info p-2 m-2">Back to messages</button></router-link>
-   <div v-show="this.$store.state.userData.lives === 0">
-      <router-link to="/"><button type="button" class="btn btn-outline-info p-2 m-2">Start the new game</button></router-link>
-   </div>
-   </div>
-  </div>
 </template>
 
 <script>
@@ -46,7 +46,6 @@ export default {
           item: state => state.item
         }),
      },
-
 }
 </script>
 

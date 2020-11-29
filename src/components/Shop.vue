@@ -1,23 +1,22 @@
 <template>
-   <div class="container justify-content-center">
-      <div class="row justify-content-left"> 
+    <div class="container justify-content-center">
+        <div class="row justify-content-left"> 
             <router-link to="/home"><button type="button" class="btn btn-outline-info">Back to main board</button></router-link>     
-      </div>
+        </div>
         <div class="d-flex justify-content-center"> 
-             <div > 
+            <div > 
                 <p>Purchase an item</p>    
             </div>    
         </div> 
-      <div class="box d-flex flex-wrap">
-           <div class="msg " v-for="item in items" :key="item.id" > 
-               <router-link :to="{ name: 'item', params: { id: item.id } }">
-                   <p> {{ item.name}} </p>
-
-               </router-link>
-               <div><p> Costs: {{ item.cost }}</p></div>
+        <div class="box d-flex flex-wrap">
+            <div class="msg " v-for="item in items" :key="item.id" > 
+                <router-link :to="{ name: 'item', params: { id: item.id } }">
+                    <p> {{ item.name}} </p>
+                </router-link>
+                <div><p> Costs: {{ item.cost }}</p></div>
             </div> 
-      </div>
-  </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -38,8 +37,7 @@ export default {
         ...mapState({
           items: state => state.items
         }),
-     },
-
+    },
 }
 </script>
 
@@ -63,5 +61,4 @@ p {
 .msg:hover {
     background-color: lightblue;
 }
-
 </style>

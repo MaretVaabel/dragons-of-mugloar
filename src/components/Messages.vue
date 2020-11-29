@@ -1,22 +1,22 @@
 <template>
-  <div class="container justify-content-center">
-      <div class="row justify-content-left"> 
+    <div class="container justify-content-center">
+        <div class="row justify-content-left"> 
             <router-link to="/home"><button type="button" class="btn btn-outline-info">Back to main board</button></router-link>     
-      </div>
+        </div>
         <div class="d-flex justify-content-center"> 
-             <div > 
+            <div > 
                 <p>Click on the message and try to solve it</p>    
             </div>    
         </div> 
-      <div class="box d-flex flex-wrap">
-           <div class="msg " v-for="msg in messages" :key="msg.adId" > 
-               <router-link :to="{ name: 'message', params: { adId:msg.adId } }">
-                   <p> {{ msg.message }} </p>
-               </router-link>
-               <div class="down">Reward: {{ msg.reward }} Expires in : {{ msg.expiresIn}}</div>
+        <div class="box d-flex flex-wrap">
+            <div class="msg " v-for="msg in messages" :key="msg.adId" > 
+                <router-link :to="{ name: 'message', params: { adId:msg.adId } }">
+                   <p> {{ msg.message.split(' ')[1] ? msg.message : 'It is not the real message' }} </p>
+                </router-link>
+                <div class="down">Reward: {{ msg.reward }} gold  Expires in : {{ msg.expiresIn}} turns</div>
             </div> 
-      </div>
-  </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -32,14 +32,12 @@ export default {
     mounted() {
         this.$store.state.userData && (this.gameId = this.$store.state.userData.gameId)
         this.$store.dispatch('getMessages', this.gameId)
-
     },
     computed: {
         ...mapState({
           messages: state => state.messages
         }),
-     },
-
+    },
 }
 </script>
 

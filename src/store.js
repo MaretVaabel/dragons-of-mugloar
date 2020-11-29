@@ -12,13 +12,10 @@ export default new Vuex.Store({
         message: {},
         items: {},
         item: {}
-
     },
     mutations: {
-       async getUserData(state){
-            
+       async getUserData(state){ 
         const response = await axios.post(`https://dragonsofmugloar.com/api/v2/game/start`)
-           
                 state.userData = {
                     gameId: response.data.gameId,
                     lives: response.data.lives,
@@ -28,12 +25,10 @@ export default new Vuex.Store({
                     highScore: response.data.highScore,
                     turn: response.data.turn
                 }
-
         },
         getReputation(state, gameId) {
             axios.post(`https://dragonsofmugloar.com/api/v2/${gameId}/investigate/reputation`)
             .then((response) => {
-               // console.log(response)
                 state.reputation = {
                     people: response.data.people,
                     state: response.data.state,
@@ -47,9 +42,7 @@ export default new Vuex.Store({
         getMessages(state, gameId) {
             axios.get(`https://dragonsofmugloar.com/api/v2/${gameId}/messages`)
             .then((response) => {
-                //console.log(response.data)
-                    state.messages = response.data
-                   
+                state.messages = response.data              
             })
             .catch((error) => {
                 console.log(error)
@@ -58,7 +51,6 @@ export default new Vuex.Store({
         solveMessage(state, params) {
             axios.post(`https://dragonsofmugloar.com/api/v2/${params.gameId}/solve/${params.adId}`)
             .then((response) => {
-                //console.log(response.data)
                 state.message = response.data
                 if(state.userData && state.userData.lives > 0) {
                     state.userData.lives = response.data.lives
@@ -72,8 +64,7 @@ export default new Vuex.Store({
             })
             .catch((error) => {
                 console.log(error)
-            })
-            
+            })   
         },
         getItems(state, gameId) {
 
@@ -101,10 +92,8 @@ export default new Vuex.Store({
             })
             .catch((error) => {
                 console.log(error)
-            })
-            
-        }
-        
+            })   
+        } 
     },
     actions: {
         getUserData: context => {
@@ -125,6 +114,5 @@ export default new Vuex.Store({
         buyItem(context, params) {
             context.commit('buyItem', params)
         }  
-
     }
 })

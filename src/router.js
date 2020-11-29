@@ -18,8 +18,7 @@ const routes = [
           { path: '/message/:adId', name: 'message', component: () => import('./components/Message.vue') },
           { path: '/shop', component: () => import('./components/Shop.vue') },
           { path: '/item/:id', name: 'item', component: () => import('./components/Item.vue') },
-         ]
-
+    ]
   },
 ]
 

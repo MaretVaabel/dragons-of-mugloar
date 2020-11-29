@@ -2,14 +2,13 @@
   <div class='container d-flex justify-content-around flex-wrap'>
     <router-link to="/investigation"><div class="box d-flex justify-content-center"> <p>Investigate your reputation</p></div></router-link>
     <router-link to="/messages"><div class="box d-flex justify-content-center"><p>See all messages</p></div></router-link>
-   <router-link to="/shop"> <div class="box d-flex justify-content-center"><p>Shop</p></div></router-link>
+    <router-link to="/shop"> <div class="box d-flex justify-content-center"><p>Shop</p></div></router-link>
   </div>
 </template>
 
 <script>
 export default {
     name: 'Choices'
-
 }
 </script>
 

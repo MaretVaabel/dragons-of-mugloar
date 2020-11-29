@@ -1,18 +1,18 @@
 <template>
-   <div class="container justify-content-center">
-       <div class="row justify-content-left"> 
+    <div class="container justify-content-center">
+        <div class="row justify-content-left"> 
             <router-link to="/home"><button type="button" class="btn btn-outline-info">Back to main board</button></router-link>     
-      </div>
-      <div class="box d-flex justify-content-center">
-          <p>{{ message.message}}</p>
-      </div>
-      <div v-show="this.$store.state.userData.lives != 0">
-      <router-link to="/messages"><button type="button" class="btn btn-outline-info">Pick another message</button></router-link>
-   </div>
-   <div v-show="this.$store.state.userData.lives === 0">
-      <router-link to="/"><button type="button" class="btn btn-outline-info">Start the new game</button></router-link>
-   </div>
-  </div>
+        </div>
+        <div class="box d-flex justify-content-center">
+            <p>{{ message.message}}</p>
+        </div>
+        <div v-show="this.$store.state.userData.lives != 0">
+            <router-link to="/messages"><button type="button" class="btn btn-outline-info">Pick another message</button></router-link>
+         </div>
+         <div v-show="this.$store.state.userData.lives === 0">
+            <router-link to="/"><button type="button" class="btn btn-outline-info">Start the new game</button></router-link>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -37,8 +37,7 @@ export default {
         ...mapState({
           message: state => state.message
         }),
-     },
-
+    },
 }
 </script>
 
