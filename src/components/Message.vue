@@ -1,6 +1,6 @@
 <template>
     <div class="container justify-content-center">
-        <div class="row justify-content-left"> 
+        <div class="row justify-content-left" v-show="this.$store.state.userData.lives != 0"> 
             <router-link to="/home"><button type="button" class="btn btn-outline-info">Back to main board</button></router-link>     
         </div>
         <div class="box d-flex justify-content-center">
