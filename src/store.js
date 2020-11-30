@@ -57,6 +57,7 @@ export default new Vuex.Store({
                     state.userData.gold = response.data.gold 
                     state.userData.turn = response.data.turn 
                     state.userData.score = response.data.score
+                    //state.userData.highScore = response.data.highScore
                     if(state.userData.highScore < response.data.score) {
                         state.userData.highScore = response.data.score
                     }   
@@ -70,7 +71,7 @@ export default new Vuex.Store({
 
             axios.get(`https://dragonsofmugloar.com/api/v2/${gameId}/shop`)
             .then((response) => {
-                console.log(response)
+                //console.log(response)
                 state.items = response.data
             })
             .catch((error) => {

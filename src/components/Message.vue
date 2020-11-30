@@ -6,12 +6,15 @@
         <div class="box d-flex justify-content-center">
             <p>{{ message.message}}</p>
         </div>
-        <div v-show="this.$store.state.userData.lives != 0">
-            <router-link to="/messages"><button type="button" class="btn btn-outline-info">Pick another message</button></router-link>
+        <div class="buttons row justify-content-center">
+            <div v-show="this.$store.state.userData.lives != 0">
+                <router-link to="/messages"><button type="button" class="btn btn-outline-info p-2 m-2">Pick another message</button></router-link>
+                <router-link to="/shop"><button type="button" class="btn btn-outline-info p-2 m-2">Go to shop</button></router-link>
+            </div>  
+            <div v-show="this.$store.state.userData.lives === 0">
+                <router-link to="/"><button type="button" class="btn btn-outline-info p-2 m-2">Start the new game</button></router-link>
+            </div>
          </div>
-         <div v-show="this.$store.state.userData.lives === 0">
-            <router-link to="/"><button type="button" class="btn btn-outline-info">Start the new game</button></router-link>
-        </div>
     </div>
 </template>
 
@@ -30,7 +33,7 @@ export default {
     },
     mounted() {
         this.$store.state.userData && (this.params.gameId = this.$store.state.userData.gameId)
-        this.$store.state.messages && (this.params.adId = this.$route.params.adId)
+        this.$route.params.adId.slice(-1) === '=' ? (this.params.adId = atob(this.$route.params.adId)):(this.params.adId = this.$route.params.adId)
         this.$store.dispatch('solveMessage', this.params)
     },
     computed: {

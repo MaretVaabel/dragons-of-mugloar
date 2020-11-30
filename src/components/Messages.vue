@@ -9,11 +9,15 @@
             </div>    
         </div> 
         <div class="box d-flex flex-wrap">
-            <div class="msg " v-for="msg in messages" :key="msg.adId" > 
+            <div class="msg d-flex align-items flex-column" v-for="msg in messages" :key="msg.adId" > 
                 <router-link :to="{ name: 'message', params: { adId:msg.adId } }">
-                   <p> {{ msg.message.split(' ')[1] ? msg.message : 'It is not the real message' }} </p>
+                   <p> {{ msg.encrypted === 1 ? decode(msg.message) : msg.message}} </p>
                 </router-link>
-                <div class="down">Reward: {{ msg.reward }} gold,  Expires in: {{ msg.expiresIn}} turns</div>
+                <div class="mt-auto p-2">
+                    <div>Reward: {{ msg.reward }} gold</div>
+                    <div>Expires in: {{ msg.expiresIn}} turns</div>
+                    <div >Probability is: {{msg.encrypted === 1 ? decode(msg.probability) : msg.probability }} </div>
+                </div>
             </div> 
         </div>
     </div>
@@ -38,6 +42,12 @@ export default {
           messages: state => state.messages
         }),
     },
+    methods: {
+        decode(str) {
+            const msg = atob(str)
+            return msg
+        }
+    }
 }
 </script>
 
