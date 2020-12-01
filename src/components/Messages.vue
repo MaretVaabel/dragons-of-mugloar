@@ -1,7 +1,8 @@
 <template>
     <div class="container justify-content-center">
-        <div class="row justify-content-left"> 
-            <router-link to="/home"><button type="button" class="btn btn-outline-info">Back to main board</button></router-link>     
+        <div class="row justify-content-between"> 
+            <router-link to="/home"><button type="button" class="btn btn-outline-info">Back to main board</button></router-link>
+            <div>* Suspicious ad</div> 
         </div>
         <div class="d-flex justify-content-center"> 
             <div > 
@@ -11,7 +12,7 @@
         <div class="box d-flex flex-wrap">
             <div class="msg d-flex align-items flex-column" v-for="msg in messages" :key="msg.adId" > 
                 <router-link :to="{ name: 'message', params: { adId:msg.adId } }">
-                   <p> {{ msg.encrypted === 1 ? decode(msg.message) : msg.message}} </p>
+                   <p> {{ msg.encrypted === 1 ? decode(msg.message) : isSuspicious(msg.message) }} </p>
                 </router-link>
                 <div class="mt-auto p-2">
                     <div>Reward: {{ msg.reward }} gold</div>
@@ -44,9 +45,16 @@ export default {
     },
     methods: {
         decode(str) {
-            const msg = atob(str)
+            const msg = decodeURIComponent(escape(window.atob(str)))
+            return msg
+        },
+        isSuspicious(msg) {
+            if (msg.indexOf("Steal super awesome diamond") != -1){
+                 return '*'+msg
+            }
             return msg
         }
+
     }
 }
 </script>

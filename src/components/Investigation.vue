@@ -9,9 +9,9 @@
             </div>    
         </div> 
         <div class="box d-flex flex-column">
-            <div><p>People: {{ reputation.people }}</p></div>
-            <div><p>State: {{ reputation.state }}</p></div>
-            <div><p>Underworld: {{ reputation.underworld }} </p></div>
+            <div><p>People: {{ roundTheNumber(reputation.people) }}</p></div>
+            <div><p>State: {{ roundTheNumber(reputation.state) }}</p></div>
+            <div><p>Underworld: {{ roundTheNumber(reputation.underworld) }} </p></div>
         </div>
   </div>
 </template>
@@ -35,6 +35,14 @@ export default {
           reputation: state => state.reputation
         }),
      },
+     methods: {
+       roundTheNumber(value){
+         if(value.toString().split(".")[1]) {
+           return Number(value.toFixed(1))
+         }
+         return value
+       }
+     }
 }
 </script>
 
